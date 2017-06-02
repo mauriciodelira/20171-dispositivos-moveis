@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mauricio.ifpb.pdm.arrocha.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="128dp"
+        android:id="@+id/tvMenor"
+        android:text="1"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/etOpcao"
+        app:layout_constraintBottom_toTopOf="@+id/btEscolher"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:minWidth="67dp"
+        android:inputType="number"
+        android:layout_height="wrap_content"
+        android:textSize="52sp"
+        android:id="@+id/etOpcao"
+        app:layout_constraintLeft_toRightOf="@+id/tvMenor"
+        app:layout_constraintRight_toLeftOf="@+id/tvMaior"
+        app:layout_constraintBottom_toTopOf="@+id/btEscolher"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="128dp"
+        android:text="100"
+        android:textStyle="bold"
+        android:textSize="36sp"
+        android:id="@+id/tvMaior"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/etOpcao"
+        app:layout_constraintBottom_toTopOf="@+id/btEscolher"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etOpcao"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/btEscolher"
+        android:text="Enviar!"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+    <Button
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btEscolher"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="invisible"
+        android:id="@+id/btReplay"
+        android:text="Replay"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        />
+
+</android.support.constraint.ConstraintLayout>
