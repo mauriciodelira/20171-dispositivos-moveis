@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivListItemImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/saga_minimalist_alien"
+        android:scaleType="centerCrop"
+        app:civ_border_width="0.5dp"
+        app:civ_border_color="@color/colorLightDarkBackground"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tvListaItemTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Titulo filme"
+        android:textColor="@color/colorAccent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="@+id/ivListItemImage"
+        app:layout_constraintLeft_toRightOf="@+id/ivListItemImage"
+        app:layout_constraintBottom_toTopOf="@+id/tvListaItemDescricao"
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginLeft="16dp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        />
+
+    <TextView
+        android:id="@+id/tvListaItemDescricao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="Breve descrição do filme. Breve descrição do filme. Breve descrição do filme. Breve descrição do filme. Breve descrição do filme. Breve descrição do filme. Breve descrição do filme. Breve descrição do filme. "
+        android:textColor="@color/colorTextOnDarkSecondary"
+        app:layout_constraintTop_toBottomOf="@+id/tvListaItemTitulo"
+        app:layout_constraintBottom_toBottomOf="@+id/ivListItemImage"
+        app:layout_constraintLeft_toLeftOf="@+id/tvListaItemTitulo"
+        app:layout_constraintRight_toLeftOf="@+id/ivListaItemRightArrow"
+        android:maxLines="1"
+        android:ellipsize="end"
+        />
+
+    <ImageView
+        android:id="@+id/ivListaItemRightArrow"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/ic_keyboard_arrow_right_white_48dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp" />
+    </android.support.constraint.ConstraintLayout>

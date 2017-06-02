@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context="br.edu.ifpb.pdm.orgulhogeek.SagaActivity"
+    android:background="#263238"
+    android:focusableInTouchMode="true"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/llSagaPoster"
+        >
+        <ImageView
+            android:id="@+id/ivSagaPoster"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSagaTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Titulo 1"
+        android:textSize="24sp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/llSagaPoster"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/tvSagaDescricao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:maxHeight="130dp"
+        android:textColor="@color/colorTextOnDarkSecondary"
+        android:scrollHorizontally="false"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:scrollbarSize="3dp"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:text="Localizada no mundo ficcional na Terra Média, os três filmes seguem o jovem hobbit Frodo Baggins em sua missão de destruir o Um Anel, assegurando assim também a destruição de seu criador, o Senhor das Trevas Sauron. Para auxiliá-lo em sua tarefa, forma-se uma sociedade, composta por representantes dos humanos, hobbits, elfos e anões, encarregados de sua segurança pelos estranhos caminhos que terá que seguir. No entanto, a sociedade quebra-se e Frodo continua sua jornada sozinho, apenas acompanhado por seu amigo fiel, Samwise Gamgee, e pelo traiçoeiro Gollum, um dos antigos possuidores do Um Anel. Ao mesmo tempo, o mago Gandalf e o humano Aragorn, herdeiro exilado do trono de Gondor, unem-se e juntam o Povo Livre da Terra Média em uma guerra, finalmente vitoriosa, contra Sauron."
+        app:layout_constraintLeft_toRightOf="@+id/llSagaPoster"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSagaTitulo"
+        android:layout_marginStart="16dp" />
+
+    <RatingBar
+        android:id="@+id/rbSagaRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:rating="4.6"
+        style="@style/Base.Widget.AppCompat.RatingBar.Small"
+        app:layout_constraintTop_toBottomOf="@+id/llSagaPoster"
+        app:layout_constraintBottom_toTopOf="@+id/viewSagaDivisor"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        />
+
+
+    <View
+        android:id="@+id/viewSagaDivisor"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        android:layout_margin="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/rbSagaRating"
+        app:layout_constraintBottom_toTopOf="@+id/tvSagaComentarios"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvSagaComentarios"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Comentários"
+        android:textSize="18sp"
+        android:textColor="@color/colorTextOnDarkPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/viewSagaDivisor"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/lvSagaComentarios"
+        android:layout_marginStart="8dp"
+        />
+
+    <ListView
+        android:cacheColorHint="@color/colorTextOnDarkPrimary"
+        android:id="@+id/lvSagaComentarios"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvSagaComentarios"
+        app:layout_constraintBottom_toTopOf="@+id/etSagaComentario"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="16dp"
+
+        >
+
+    </ListView>
+
+    <EditText
+        android:id="@+id/etSagaComentario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btSagaComentarioEnviar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@color/colorPrimary"
+        android:hint="Deixe aqui seu comentário!"
+        android:textColorHint="@color/colorHint"
+        android:textSize="16sp"
+        android:textColor="@color/colorTextOnDarkPrimary"
+        android:paddingTop="12dp"
+        android:paddingBottom="8dp"
+        />
+    <Button
+        android:id="@+id/btSagaComentarioEnviar"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Enviar"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textColor="@color/colorTextOnDarkPrimary"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/etSagaComentario"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/etSagaComentario"
+        />
+
+
+
+</android.support.constraint.ConstraintLayout>
