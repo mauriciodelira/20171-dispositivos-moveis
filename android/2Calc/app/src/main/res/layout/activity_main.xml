@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mauricio.ifpb.pdm.twocalc.MainActivity">
+
+    <EditText
+        android:id="@+id/etNum1"
+        android:layout_width="0dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:hint="Número 1"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/tvResultado"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/etNum2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSymbol"
+        android:layout_width="0dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvResultado"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/etNum1"
+        app:layout_constraintRight_toLeftOf="@+id/etNum2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etNum2"
+        android:layout_width="0dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
+        android:hint="Número 2"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/tvResultado"
+        app:layout_constraintLeft_toRightOf="@+id/etNum1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Iniciando..."
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/btSoma"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNum1" />
+
+    <Button
+        android:id="@+id/btSoma"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorButton"
+        android:text="+"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/btMultiplicacao"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btSubtracao"
+
+        app:layout_constraintTop_toBottomOf="@+id/tvResultado" />
+
+    <Button
+        android:id="@+id/btSubtracao"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorButton"
+        android:text="−"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/btDivisao"
+        app:layout_constraintLeft_toRightOf="@+id/btSoma"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResultado" />
+
+    <Button
+        android:id="@+id/btMultiplicacao"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="18dp"
+        android:backgroundTint="@color/colorButton"
+        android:text="×"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btDivisao"
+        app:layout_constraintTop_toBottomOf="@+id/btSoma" />
+
+    <Button
+        android:id="@+id/btDivisao"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="18dp"
+        android:backgroundTint="@color/colorButton"
+        android:text="÷"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/btMultiplicacao"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btSubtracao"
+        />
+
+</android.support.constraint.ConstraintLayout>
