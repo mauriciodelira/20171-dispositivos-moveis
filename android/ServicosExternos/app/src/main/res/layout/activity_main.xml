@@ -10,81 +10,100 @@
     android:gravity="center"
     android:padding="16dp"
     >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btBrowser"
+                android:text="Browser"
+                android:layout_weight="1"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btLigar"
+                android:text="Ligar"
+                android:layout_weight="1"
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btBrowser"
-        android:text="Browser"
-        android:layout_weight="1"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btLigar"
-        android:text="Ligar"
-        android:layout_weight="1"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btDiscar"
+                android:text="Discar"
+                android:layout_weight="1"
 
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btDiscar"
-        android:text="Discar"
-        android:layout_weight="1"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btEmail"
+                android:text="Email"
+                android:layout_weight="1"
 
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btEmail"
-        android:text="Email"
-        android:layout_weight="1"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btSMS"
+                android:layout_weight="1"
+                android:text="Enviar SMS"
 
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btSMS"
-        android:layout_weight="1"
-        android:text="Enviar SMS"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/btCompartilharTexto"
+                android:text="Compartilhar Texto"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/btPontoMapa"
+                android:text="Visualizar ponto no mapa"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/btRota"
+                android:text="Visualizar rota no mapa"
 
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/btCompartilharTexto"
-        android:text="Compartilhar Texto"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/btPontoMapa"
-        android:text="Visualizar ponto no mapa"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/btRota"
-        android:text="Visualizar rota no mapa"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/btYoutube"
+                android:text="Abrir vídeo no Youtube"
 
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/btYoutube"
-        android:text="Abrir vídeo no Youtube"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/btFoto"
+                android:text="Foto"
+                />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ivFotoThumbnail"
+            android:scaleType="center"
+            android:background="#55ffffff"
+            android:visibility="gone"
+            />
+    </FrameLayout>
 
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/btFoto"
-        android:text="Foto"
-        />
 </LinearLayout>

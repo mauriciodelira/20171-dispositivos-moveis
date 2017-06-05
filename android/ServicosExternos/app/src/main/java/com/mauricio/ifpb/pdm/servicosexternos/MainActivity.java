@@ -3,17 +3,23 @@ package com.mauricio.ifpb.pdm.servicosexternos;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Button btBrowser, btLigar, btDiscar, btEmail, btSMS, btCompartilharTexto, btPonto, btRota, btYoutube, btFoto;
+    static final int TIRAR_FOTO = 1; // Constante para dizer que é código de captura de imagem
+    private Button btBrowser, btLigar, btDiscar, btEmail, btSMS, btCompartilharTexto, btPonto, btRota, btYoutube, btFoto;
+    private ImageView ivThumbnail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btRota = (Button) findViewById(R.id.btRota);
         btYoutube = (Button) findViewById(R.id.btYoutube);
         btFoto = (Button) findViewById(R.id.btFoto);
+        ivThumbnail = (ImageView) findViewById(R.id.ivFotoThumbnail);
 
     }
 
@@ -63,6 +70,12 @@ public class MainActivity extends AppCompatActivity {
         btYoutube.setOnClickListener(new onClickBotao());
         btFoto.setOnClickListener(new onClickBotao());
         btCompartilharTexto.setOnClickListener(new onClickBotao());
+        ivThumbnail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.ivThumbnail.setVisibility(View.GONE);
+            }
+        });
 
     }
 
@@ -97,13 +110,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i("START-INFO","MainActivity - onDestroy");
-
     }
 
-    private class onLongClickBotao implements View.OnLongClickListener{
-        @Override
-        public boolean onLongClick(View v) {
-            return false;
+    private void dispararTirarFotoIntent() {
+        Intent itTirarFoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+//        Nesse IF ele verifica se há algum programa que abra aquela intent.
+        if (itTirarFoto.resolveActivity(getPackageManager()) != null){
+            startActivityForResult(itTirarFoto, TIRAR_FOTO);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        Vai checar se a origem é de "TIRAR_FOTO" e se voltou com sucesso.
+        if (requestCode == TIRAR_FOTO && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imgBitmap = (Bitmap) extras.get("data");
+            this.ivThumbnail = (ImageView) findViewById(R.id.ivFotoThumbnail);
+            this.ivThumbnail.setImageBitmap(imgBitmap);
+            this.ivThumbnail.setVisibility(View.VISIBLE);
         }
     }
 
@@ -134,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 if(permission == PackageManager.PERMISSION_GRANTED){
                     startActivity(it);
                 }else
-                    Toast.makeText(MainActivity.this.getApplicationContext(), "Permissão negada.\nVerifique suas configurações", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this.getApplicationContext(), "Permissão negada.\nVerifique suas configurações e tente novamente.", Toast.LENGTH_LONG).show();
 
             }
             if(v.equals(MainActivity.this.btEmail)){
@@ -153,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
             }
             if(v.equals(MainActivity.this.btCompartilharTexto)){
                 Log.i("CLICK-BOTAO","onClick - Compartilhar");
-                Intent it = new Intent(.ACTION_SEND);
+                Intent it = new Intent(Intent.ACTION_SEND);
                 // Intent.setType = mime tipes.
                 it.setType("text/plain");
                 it.putExtra(Intent.EXTRA_TEXT, "Você é lindx de todo o coração do mundo. <3");
@@ -162,24 +188,30 @@ public class MainActivity extends AppCompatActivity {
             }
             if(v.equals(MainActivity.this.btPonto)){
                 Log.i("CLICK-BOTAO","onClick - Ponto no mapa");
-                Uri uri = Uri.parse("gep:-8.0000000, -35.0000000");
+                Uri uri = Uri.parse("geo:-8.0000000, -35.0000000");
                 Intent it = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(it);
             }
             if(v.equals(MainActivity.this.btRota)){
                 Log.i("CLICK-BOTAO","onClick - Rota no mapa");
-                String origem = "-7.0000394,-63333332"
-                String destino = "-1.0000394,-53333332"
+                String start = "-7.0000394,-63333332";
+                String destination = "-1.0000394,-53333332";
+                String path = "http://maps.google.com/maps?f=&saddr=%s+&daddr=%s";
+                Uri uri = Uri.parse(String.format(path, start, destination));
+                Intent it = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(it);
+
             }
 
             if(v.equals(MainActivity.this.btYoutube)){
                 Log.i("CLICK-BOTAO","onClick - Youtube");
-                Uri uri = Uri.parse("bmvd")
+                Uri uri = Uri.parse("vnd.youtube://hgbTmiDS1dk");
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
 
             }
-            else{
+            if(v.equals(MainActivity.this.btFoto)){
                 Log.i("CLICK-BOTAO","onClick - Foto");
-
+                MainActivity.this.dispararTirarFotoIntent();
             }
 
         }
