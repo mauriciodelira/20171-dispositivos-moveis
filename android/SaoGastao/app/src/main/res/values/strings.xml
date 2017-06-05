@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">São Gastão</string>
+    <string name="action_orcamento">Orçamento total</string>
+    <string name="action_zerar">Limpar lista</string>
+    <string name="action_sobre">Sobre</string>
+    <string name="form_titulo_descricao">Descrição</string>
+    <string name="form_titulo_quantidade">Quantidade</string>
+    <string name="form_titulo_valorunitario">Valor Unitário (R$)</string>
+</resources>

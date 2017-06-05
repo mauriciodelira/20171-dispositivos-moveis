@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mauricio.ifpb.pdm.saogastao.MainActivity">
+
+    <item
+        android:id="@+id/action_orcamento"
+        android:orderInCategory="100"
+        android:title="@string/action_orcamento"
+        app:showAsAction="never"
+    />
+    <item
+        android:id="@+id/action_zerar"
+        android:orderInCategory="200"
+        android:title="@string/action_zerar"
+        app:showAsAction="never"
+    />
+    <item
+        android:id="@+id/action_sobre"
+        android:orderInCategory="300"
+        android:title="@string/action_sobre"
+        app:showAsAction="never"
+        />
+
+</menu>
