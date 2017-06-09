@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         this.lvProdutos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
-
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Produto p = gerenciadorProdutos.getProdutos().get(position);
