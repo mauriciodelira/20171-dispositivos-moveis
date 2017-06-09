@@ -66,6 +66,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(it, FORMULARIO);
             }
         });
+
+        this.lvProdutos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Produto p = gerenciadorProdutos.getProdutos().get(position);
+                String text = String.format("%s: total - R$%s", p.getDescricao(), p.getTotal());
+                Toast.makeText(getApplicationContext(), text,Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
     }
 
 //    Criar o menu lá de cima
