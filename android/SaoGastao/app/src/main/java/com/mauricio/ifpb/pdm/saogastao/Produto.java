@@ -4,15 +4,22 @@ import java.io.Serializable;
 
 public class Produto implements Serializable{
     private String descricao;
-    private int quantidade = 0;
+    private float quantidade = 0;
     private float valorUnitario = Float.parseFloat("0.0");
 
-    public Produto(String descricao, int quantidade, float valorUnitario){
+    public Produto(String descricao, float quantidade, float valorUnitario){
         this.descricao = descricao;
-        this.quantidade = quantidade;
-        this.valorUnitario = valorUnitario;
+        if(quantidade!=Float.valueOf("0.0"))
+            this.quantidade = quantidade;
+        else
+            this.quantidade = 0;
+
+        if(valorUnitario!=Float.valueOf("0.0"))
+            this.valorUnitario = valorUnitario;
+        else
+            this.valorUnitario = 0;
     }
-    public Produto(String descricao, int quantidade){
+    public Produto(String descricao, float quantidade){
         this.descricao = descricao;
         this.quantidade = quantidade;
         this.valorUnitario = Float.parseFloat("0.00");
@@ -31,11 +38,11 @@ public class Produto implements Serializable{
         this.descricao = descricao;
     }
 
-    public int getQuantidade() {
+    public float getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(float quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -53,7 +60,7 @@ public class Produto implements Serializable{
 
     @Override
     public String toString(){
-        return this.descricao;
+        return this.descricao + ", $un: "+this.valorUnitario+", tot: "+this.getTotal();
     }
 
 }
