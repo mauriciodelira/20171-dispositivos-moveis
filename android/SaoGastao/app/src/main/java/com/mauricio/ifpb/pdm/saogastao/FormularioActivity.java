@@ -82,44 +82,27 @@ public class FormularioActivity extends AppCompatActivity {
 
             if(v == FormularioActivity.this.btAdicionar){
                 Produto aux = new Produto(strDescr, strQtde, strValorUnit);
-                gerenciadorProdutos.add(aux);
-                Log.i("MILHO","ADD Produtos: "+gerenciadorProdutos.getProdutos().toString());
-
-                setResult(RESULT_OK, it);
+                it.putExtra("GASTO", aux);
+                setResult(MainActivity.RESULT_CREATE_OBJECT, it);
                 finish();
-                return;
             }else
             if(v == FormularioActivity.this.btCancelar){
                 setResult(RESULT_OK, it);
                 finish();
-                return;
             }else
             if(v == FormularioActivity.this.btExcluir){
-                Produto aux = gerenciadorProdutos.findProduto(FormularioActivity.this.produto.getDescricao());
-                if(aux == null) aux = gerenciadorProdutos.findProduto(FormularioActivity.this.produto);
-                gerenciadorProdutos.remove(aux);
-                Log.i("MILHO","REM Produtos: "+gerenciadorProdutos.getProdutos().toString());
-
-                setResult(RESULT_OK, it);
+                it.putExtra("GASTO", FormularioActivity.this.produto);
+                setResult(MainActivity.RESULT_DELETE_OBJECT, it);
                 finish();
-                return;
             }else if(v == FormularioActivity.this.btAtualizar){
-                Produto aux = gerenciadorProdutos.findProduto(FormularioActivity.this.produto.getDescricao());
-                if(aux == null) aux = gerenciadorProdutos.findProduto(FormularioActivity.this.produto);
-
-                Log.i("MILHO","ATT Produtos (antes): "+gerenciadorProdutos.getProdutos().toString());
-                if(aux!=null){
-                    aux.setDescricao(strDescr);
-                    aux.setQuantidade(strQtde);
-                    aux.setValorUnitario(strValorUnit);
-                }else {
-                    setResult(RESULT_CANCELED, it);
-                    finish();
-                    return;
-                }
-                setResult(RESULT_OK, it);
+                Produto aux = new Produto();
+                aux.setDescricao(strDescr);
+                aux.setQuantidade(strQtde);
+                aux.setValorUnitario(strValorUnit);
+                it.putExtra("GASTO", FormularioActivity.this.produto);
+                it.putExtra("NOVOSDADOS", aux);
+                setResult(MainActivity.RESULT_UPDATE_OBJECT, it);
                 finish();
-                return;
             }
         }
     }

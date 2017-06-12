@@ -9,7 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -21,6 +20,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final int FORMULARIO = 1200;
+    static final int RESULT_CREATE_OBJECT = 1001;
+    static final int RESULT_UPDATE_OBJECT = 1002;
+    static final int RESULT_DELETE_OBJECT = 1003;
+
     private ListView lvProdutos;
     private TextView tvListaVazias;
     private ProdutoAdapter adapter;
@@ -152,7 +155,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.i("MILHO", "OnActivityResult. Result Code: "+resultCode+". Request Code: "+requestCode);
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK) this.popularLista();
+
+        Produto retorno1 = (Produto) data.getSerializableExtra("GASTO");
+
+        if(resultCode == RESULT_CREATE_OBJECT){
+            gerenciadorProdutos.add(retorno1);
+        }
+        if(resultCode == RESULT_DELETE_OBJECT){
+            gerenciadorProdutos.remove(retorno1);
+        }
+        if(resultCode == RESULT_UPDATE_OBJECT){
+            Produto aux = gerenciadorProdutos.findProduto(retorno1.getDescricao());
+            Produto novosDados = (Produto) data.getSerializableExtra("NOVOSDADOS");
+            if(aux != null) {
+                aux.setQuantidade(novosDados.getQuantidade());
+                aux.setValorUnitario(novosDados.getValorUnitario());
+                aux.setDescricao(novosDados.getDescricao());
+            }
+        }
+        this.popularLista();
     }
 
     @Override

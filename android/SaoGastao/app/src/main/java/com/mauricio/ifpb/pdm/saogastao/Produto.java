@@ -30,6 +30,12 @@ public class Produto implements Serializable{
         this.valorUnitario = Float.parseFloat("0.00");
     }
 
+    public Produto() {
+        this.descricao = "";
+        this.quantidade = 0;
+        this.valorUnitario = 0;
+    }
+
     public String getDescricao() {
         return descricao;
     }
