@@ -9,12 +9,25 @@
     android:padding="16dp"
     >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:gravity="center"
+        >
+    <ImageButton
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_action_add"
+        android:id="@+id/ibtnFormularioFoto"
+        />
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_vertical"
-        android:layout_weight="1"
+        android:paddingLeft="8dp"
         >
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
@@ -24,7 +37,7 @@
             android:id="@+id/etFormularioDescricao"
             />
     </android.support.design.widget.TextInputLayout>
-
+    </LinearLayout>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,15 +79,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnFormularioAtualizar"
-            android:text="@string/form_bt_atualizar"
-            android:visibility="gone"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/form_bt_adicionar"
-            android:id="@+id/btnFormularioAdicionar"
+            android:text="@string/form_bt_salvar"
+            android:id="@+id/btnFormularioSalvar"
             />
         <Button
             android:layout_width="wrap_content"
