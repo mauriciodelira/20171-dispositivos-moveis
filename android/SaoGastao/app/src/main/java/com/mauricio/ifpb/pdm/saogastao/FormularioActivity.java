@@ -21,6 +21,8 @@ public class FormularioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario);
 
+        inte
+
         Intent it = getIntent();
         this.produto = (Produto) it.getSerializableExtra("PRODUTO");
 
@@ -92,6 +94,7 @@ public class FormularioActivity extends AppCompatActivity {
             }else
             if(v == FormularioActivity.this.btExcluir){
                 it.putExtra("GASTO", FormularioActivity.this.produto);
+
                 setResult(MainActivity.RESULT_DELETE_OBJECT, it);
                 finish();
             }else if(v == FormularioActivity.this.btAtualizar){

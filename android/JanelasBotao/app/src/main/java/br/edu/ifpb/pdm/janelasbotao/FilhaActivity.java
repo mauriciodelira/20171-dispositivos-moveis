@@ -16,7 +16,7 @@ public class FilhaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filha);
 
-        tvFilha = (TextView) findViewById(R.id.tvFilhaHello);
+        tvFilha = (TextView) findViewById(R.id.tvFilhaTitulo);
 
 //        1. Vai pegar a Intent que chamou a activity
         Intent it = getIntent();

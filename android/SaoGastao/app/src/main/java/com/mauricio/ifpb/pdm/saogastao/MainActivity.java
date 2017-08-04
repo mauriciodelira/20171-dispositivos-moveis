@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,15 +21,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final int FORMULARIO = 1200;
-    static final int RESULT_CREATE_OBJECT = 1001;
-    static final int RESULT_UPDATE_OBJECT = 1002;
+    static final int CREATE_OBJECT = 1001;
+    static final int UPDATE_OBJECT = 1002;
     static final int RESULT_DELETE_OBJECT = 1003;
 
     private ListView lvProdutos;
     private TextView tvListaVazias;
     private ProdutoAdapter adapter;
     private CrudProdutos gerenciadorProdutos = CrudProdutos.getInstance(); // vai pegar a instância de CRUD de produtos
-    private List<Produto> listaProdutos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private void getViews(){
         this.lvProdutos = (ListView) findViewById(R.id.lvMainProdutos);
         this.lvProdutos.setEmptyView(findViewById(R.id.tvMainEmptyItem));
-        this.popularLista();
+//        this.popularLista();
     }
 
 //    Setar onItemClickListener da ListView
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent it = new Intent(MainActivity.this, FormularioActivity.class);
                 it.putExtra("PRODUTO", gerenciadorProdutos.getProdutos().get(position));
 
-                startActivityForResult(it, FORMULARIO);
+                startActivityForResult(it, RESULT_UPDATE_OBJECT);
             }
         });
 
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(it, FORMULARIO);
         }
     }
-
+/*
 //    Povoar a ListView com um adapter customizado
     private void popularLista(){
         List<Produto> tempProdutos = gerenciadorProdutos.getProdutos();
@@ -149,7 +149,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+*/
 
+    private void popularLista(){
+        ((ArrayAdapter) MainActivity.this.lvProdutos.getAdapter()).notifyDataSetChanged();
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -157,20 +162,21 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         Produto retorno1 = (Produto) data.getSerializableExtra("GASTO");
-
-        if(resultCode == RESULT_CREATE_OBJECT){
-            gerenciadorProdutos.add(retorno1);
-        }
-        if(resultCode == RESULT_DELETE_OBJECT){
-            gerenciadorProdutos.remove(retorno1);
-        }
-        if(resultCode == RESULT_UPDATE_OBJECT){
-            Produto aux = gerenciadorProdutos.findProduto(retorno1.getDescricao());
-            Produto novosDados = (Produto) data.getSerializableExtra("NOVOSDADOS");
-            if(aux != null) {
-                aux.setQuantidade(novosDados.getQuantidade());
-                aux.setValorUnitario(novosDados.getValorUnitario());
-                aux.setDescricao(novosDados.getDescricao());
+        if(resultCode == RESULT_OK) {
+            if (requestCode == RESULT_CREATE_OBJECT) {
+                gerenciadorProdutos.add(retorno1);
+            }
+            if (requestCode == RESULT_DELETE_OBJECT) {
+                gerenciadorProdutos.remove(retorno1);
+            }
+            if (requestCode == RESULT_UPDATE_OBJECT) {
+                Produto aux = gerenciadorProdutos.findProduto(retorno1.getDescricao());
+                Produto novosDados = (Produto) data.getSerializableExtra("NOVOSDADOS");
+                if (aux != null) {
+                    aux.setQuantidade(novosDados.getQuantidade());
+                    aux.setValorUnitario(novosDados.getValorUnitario());
+                    aux.setDescricao(novosDados.getDescricao());
+                }
             }
         }
         this.popularLista();

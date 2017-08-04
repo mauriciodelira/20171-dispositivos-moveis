@@ -11,16 +11,59 @@ public class MainActivity extends AppCompatActivity {
     private Button btMain;
     private static int qtd = 0;
 
+    public MainActivity(){
+        Log.i("ORDEM","MainActivity - Construtor");
+    }
+
 //    4.3 Criando variável global estática
     private final static int FILHA = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.i("ORDEM","MainActivity - OnCreate()");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         btMain = (Button) findViewById(R.id.btMainFilha);
         btMain.setOnClickListener(new OnClickBtMain());
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("ORDEM","MainActivity - OnStart()");
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("ORDEM","MainActivity - OnRestart()");
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("ORDEM","MainActivity - OnResume()");
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("ORDEM","MainActivity - OnStop()");
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("ORDEM","MainActivity - OnDestroy()");
+
     }
 
     private class OnClickBtMain implements View.OnClickListener{
@@ -54,6 +97,9 @@ public class MainActivity extends AppCompatActivity {
 //      data - dados
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.i("ORDEM","MainActivity - OnActivityResult()");
+
+
         if(requestCode == RESULT_OK){
             if(resultCode == FILHA){
                 Log.i("JANELA", "Retorno da Filha: "+data.getStringExtra("RETURN"));

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Layout</string>
+    <string name="tv_login">Login</string>
+    <string name="tv_senha">Senha</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="btn_cancelar">Cancelar</string>
+</resources>
