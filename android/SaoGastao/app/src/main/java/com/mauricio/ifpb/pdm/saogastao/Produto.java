@@ -1,11 +1,18 @@
 package com.mauricio.ifpb.pdm.saogastao;
 
-import java.io.Serializable;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
 
-public class Produto implements Serializable{
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Produto implements Serializable, Comparable<Produto>{
     private String descricao;
     private float quantidade = 0;
     private float valorUnitario = Float.parseFloat("0.0");
+    private Bitmap imgBitmap = null;
+    private Date dataHora;
 
     public Produto(String descricao, float quantidade, float valorUnitario){
         this.descricao = descricao;
@@ -18,6 +25,8 @@ public class Produto implements Serializable{
             this.valorUnitario = valorUnitario;
         else
             this.valorUnitario = 0;
+
+        this.dataHora = new Date();
     }
     public Produto(String descricao, float quantidade){
         this.descricao = descricao;
@@ -64,9 +73,29 @@ public class Produto implements Serializable{
         return this.valorUnitario * this.quantidade;
     }
 
+    public Bitmap getImgBitmap(){
+        return this.imgBitmap;
+    }
+
+    public void setImgBitmap(Bitmap img){
+        this.imgBitmap = img;
+    }
+
+    public String getDataHoraStr(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM 'às' HH:mm'h'");
+        return sdf.format(dataHora);
+    }
+    public Date getDataHora(){
+        return this.dataHora;
+    }
+
     @Override
     public String toString(){
         return this.descricao + ", $un: "+this.valorUnitario+", tot: "+this.getTotal();
     }
 
+    @Override
+    public int compareTo(@NonNull Produto o) {
+        return this.descricao.compareToIgnoreCase(o.descricao);
+    }
 }

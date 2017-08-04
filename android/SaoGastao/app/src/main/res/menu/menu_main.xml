@@ -21,5 +21,13 @@
         android:title="@string/action_sobre"
         app:showAsAction="never"
         />
+    <item
+        android:id="@+id/action_ordenar"
+        android:orderInCategory="401"
+        app:showAsAction="always"
+        android:title="@string/action_ordenar"
+        android:icon="@drawable/ic_reorder_white_36dp"
+        />
+
 
 </menu>
